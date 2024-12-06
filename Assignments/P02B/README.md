@@ -1,4 +1,4 @@
-## P02B
+## P02B - Class Design
 
 Here's a potential class design for the "Knucklebones" game based on the guidelines you've provided:
 
