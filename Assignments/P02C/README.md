@@ -1,51 +1,60 @@
-# P02C Knucklebones 
+# P02C - KnuckleBones Game 
 
-## Description
-Knucklebones is a dice-based game played between two players, each having a 3x3 grid. The goal is to score more points than the opponent by placing dice on the grid and following specific rules. The game uses the Ncurses library to create a fun and interactive console experience with animations, color, and organized gameplay.
+## Overview
+KnuckleBones is a simple dice game featured in "Cult of the Lamb." The game is played on a 3x3 grid where two players take turns rolling dice and placing them on their respective grids. The goal is to score more points than your opponent by strategically placing dice and using various game mechanics. The game ends when all spaces are filled, and the player with the highest score wins.
 
-## Rules
-1. **Players**: Two players, each with their own 3x3 grid.
-2. **Dice Rolling**: Players roll a six-sided die each turn.
-3. **Placing Dice**: Players can place a die in one of the three columns of their grid. Dice stack vertically.
-4. **Scoring**:
-    - Score equals the sum of the values in each column.
-    - If multiple dice of the same value are placed in a column, they are multiplied together for scoring.
-    - If a player places a die where the opponent already has one in the same column, the opponent's die is removed.
-5. **End of Game**: The game ends when both grids are full. The player with the higher score wins.
+## Game Rules
+- **Two Players**: Each player has their own 3x3 grid.
+- **Dice Rolling**: Players roll a six-sided die each turn.
+- **Placing Dice**: Players place dice in one of the three columns of their grid.
+- **Scoring**: Players score based on the sum of dice in each column. If multiple dice of the same value are placed in the same column, they are multiplied for extra points.
+- **Opponent's Dice Removal**: If a player places a die that matches one of their opponent's dice in the same column, the opponent’s die is removed.
+- **End of Game**: The game ends when all 9 grid spaces are filled. The player with the highest score wins.
 
-## Components
-### 1. **Game Class**:
-The `Game` class manages the flow of the game, tracks player turns, and interacts with the dice and grid.
-- **Responsibilities**:
-    - Start, run, and end the game.
-    - Roll dice and manage grid interactions.
-    - Switch turns between players.
-    - Display the game state using the Ncurses library.
-    - Check win conditions.
+## Game Flow
+1. **Start Game**: Initialize the game and set up players.
+2. **Turn Mechanics**: Players take turns rolling dice, placing them, and scoring.
+3. **End Game**: After all spaces are filled, the game ends and the player with the highest score wins.
 
-```cpp
-class Game {
-public:
-    Game();
+## Features
+- **Ncurses**: This game uses the Ncurses library to display the game in an interactive console window, featuring colors and animated effects for a fun gameplay experience.
+- **Gameplay**: Dice rolls, grid placements, and score updates are displayed in real-time.
+  
+## Classes
+- **Game Class**: Manages the overall game flow, including players, dice, and grid.
+- **Player Class**: Represents each player with their own score and name.
+- **Dice Class**: Handles dice rolling.
+- **Grid Class**: Manages the 3x3 grid where dice are placed.
 
-    // Main gameplay methods
-    void start();
-    void take_turn();
-    bool check_win();
+## Setup
+To run the game, ensure that Ncurses is installed. Compile the program using a C++ compiler that supports C++11 or later.
 
-    // Game setup and utility methods
-    void initialize_players(std::string player1_name, std::string player2_name);
-    void roll_dice();
+## Running the Game
+1. Compile the program:
+    ```bash
+    g++ -o knucklebones game.cpp -lncurses
+    ```
+2. Run the game:
+    ```bash
+    ./knucklebones
+    ```
 
-    // UI-oriented methods for Ncurses
-    void display_game_state();
-    void end_game();
+---
 
-private:
-    Dice dice;
-    Grid grid;
-    Player* current_player;
-    Player players[2];
+### Program Description
 
-    void switch_turn();
-};
+KnuckleBones is an interactive dice game inspired by "Cult of the Lamb," developed using the Ncurses library. The game is implemented with object-oriented programming (OOP) principles to separate concerns, making the code modular and easier to maintain.
+
+- **Game Class**: Responsible for the overall game flow, including controlling turns, managing the grid and dice, and determining the winner.
+- **Player Class**: Handles each player's actions, such as rolling dice and managing their score.
+- **Dice Class**: Manages dice rolling, returning random values between 1 and 6.
+- **Grid Class**: Manages a 3x3 grid for each player where dice are placed.
+
+This program is a fun and interactive console-based game where players can challenge each other to see who can score the most points by strategically placing dice on their grid.
+
+---
+
+### Notes
+- This game is designed for two players, and the turns alternate between them.
+- Ncurses enhances the visual experience by providing colorful outputs and animation effects.
+- The game is played in a terminal, so ensure your environment supports Ncurses.
