@@ -1,7 +1,5 @@
 ## P02B - Class Design
 
-Here's a potential class design for the "Knucklebones" game based on the guidelines you've provided:
-
 ### 1. **Dice Class**
 **Data (Attributes):**
 - `sides`: (int) The number of sides on the dice (default: 6).
