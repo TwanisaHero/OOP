@@ -1,5 +1,7 @@
 # Basic OOP Terminology 
 
+In this assignment I will be providing the following [defintions](https://github.com/TwanisaHero/OOP/blob/main/Assignments/OOP_Primer/defintions.md) listed below. As well as examples that go along with each of them we learned from the entire semester.
+
 ## List of Key Words and Concepts
  Abstract Classes and Interfaces
 
