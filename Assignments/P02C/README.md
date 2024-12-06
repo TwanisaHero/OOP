@@ -50,7 +50,27 @@ KnuckleBones is an interactive dice game inspired by "Cult of the Lamb," develop
 - **Dice Class**: Manages dice rolling, returning random values between 1 and 6.
 - **Grid Class**: Manages a 3x3 grid for each player where dice are placed.
 
-This program is a fun and interactive console-based game where players can challenge each other to see who can score the most points by strategically placing dice on their grid.
+This program is a fun and interactive console-based game where players can challenge each other to see who can score the most points by strategically placing dice on their grid. 
+
+# Files
+
+| #  | Name                                  | Description                                                |
+|----|---------------------------------------|------------------------------------------------------------|
+| 1  | [button_class.hpp](./button_class.hpp)       | Use to add a button to your game.                         |
+| 2  | [color_class.hpp](./color_class.hpp)         | Use to easily make color pairs and use colors.             |
+| 3  | [dice_class.hpp](./dice_class.hpp)           | Animate a cheesy dice square (rectangle).                  |
+| 4  | [game.cpp](./game.cpp)                     | Example usage of helper classes.                           |
+| 5  | [grid_class.hpp](./grid_class.hpp)           | Where you place dice values.                               |
+| 6  | [input_class.hpp](./input_class.hpp)         | Captures input from users like a text box.                 |
+| 7  | [log.txt](./log.txt)                       | Log file to help debug programs.                           |
+| 8  | [logger_class.hpp](./logger_class.hpp)       | Class to assist logging debug statements.                  |
+| 9  | [game.hpp](./game.hpp)                     | Header for the Game class that manages the overall flow.   |
+| 10 | [player.cpp](./player.cpp)                 | Implementation of the Player class.                        |
+| 11 | [player.hpp](./player.hpp)                 | Header for the Player class with methods for player actions. |
+| 12 | [dice.cpp](./dice.cpp)                     | Implementation of the Dice class for rolling functionality. |
+| 13 | [grid.cpp](./grid.cpp)                     | Implementation of the Grid class for managing the grid layout. |
+
+
 
 ---
 
