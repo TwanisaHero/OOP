@@ -21,6 +21,6 @@ This program tests the installation of the `ncurses` library on Windows 11 using
 
 - `hello_ncurses.cpp`: The C++ source code for the "Hello, World!" program using the `ncurses` library.  
 
-### Screenshots Below:
+## Screenshots Below:
 
 ![](img.png)
