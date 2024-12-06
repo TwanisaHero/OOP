@@ -1,4 +1,4 @@
-### P02A - Ncurses Test  
+# P02A - Ncurses Test  
 
 ## Description  
 
