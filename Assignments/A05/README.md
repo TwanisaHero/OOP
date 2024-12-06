@@ -17,7 +17,7 @@ For this assignment, I installed and configured Windows Subsystem for Linux (WSL
 |  5  | Execute Bash Command or Script     | Run a simple bash script to verify WSL usage; document results for submission.                  |  
 
 
-### Screenshots:
+### Screenshots Below:
 
 ![](screenshot1.png)
 
