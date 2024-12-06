@@ -1,6 +1,7 @@
 Abstract Classes and Interfaces: An abstract class serves as a base class and cannot be instantiated. It often contains at least one pure virtual function (= 0).
 
 ''' 
+
 #include <iostream>
 using namespace std;
 
@@ -28,6 +29,7 @@ public:
         return species;
     }
  };
+ 
  ''' 
 
  Abstraction: Hiding implementation details and showing only essential information to the user. Achieved using abstract classes or interfaces.
