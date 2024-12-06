@@ -4,7 +4,7 @@
 
 ### Description:
 
-For this assignment I downloaded WSL 
+For this assignment, I installed and configured Windows Subsystem for Linux (WSL) to enable a Linux development environment on my Windows machine. This included verifying the installation, checking Linux distribution details, inspecting the WSL configuration, integrating Bash with VSCode, and running test commands or scripts to ensure functionality.
 
 ### Instructions:
 
