@@ -3,7 +3,8 @@
 ## Abstract Classes and Interfaces
 An abstract class serves as a base class and cannot be instantiated. It often contains at least one pure virtual function (= 0).
 
-class AbstractShape {
+
+'''cpp class AbstractShape {
 public:
     virtual void draw() = 0; // Pure virtual function
 };
