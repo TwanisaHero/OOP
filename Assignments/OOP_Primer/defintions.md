@@ -3,36 +3,8 @@
 ## Abstract Classes and Interfaces
 An abstract class serves as a base class and cannot be instantiated. It often contains at least one pure virtual function (= 0).
 
-```cpp
-class AbstractShape {
-public:
-    virtual void draw() = 0;  // Pure virtual function
-};
-
-class Circle : public AbstractShape {
-public:
-    void draw() override {
-        std::cout << "Drawing a circle." << std::endl;
-    }
-};
-
 ## Abstraction
 Hiding implementation details and showing only essential information to the user. Achieved using abstract classes or interfaces.
-'''
-class AbstractShape {
-public:
-    virtual void draw() = 0;  // Abstract method
-    virtual ~AbstractShape() = default;  // Virtual destructor
-};
-
-class Circle : public AbstractShape {
-public:
-    void draw() override {
-        std::cout << "Drawing a circle." << std::endl;
-    }
-};
-
-'''
 
 ## Access Modifiers (Public, Private, Protected)
 Access modifiers define the visibility of class members.
