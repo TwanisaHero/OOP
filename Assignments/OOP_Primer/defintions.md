@@ -27,16 +27,8 @@ public:
     string getSpecies() {
         return species;
     }
-};
-
-int main() {
-    Animal dog("Buddy", "Dog");
-    cout << "Name: " << dog.getName() << endl;
-    cout << "Species: " << dog.getSpecies() << endl;
-    dog.makeSound();
-    return 0;
-}
-''' 
+ };
+ ''' 
 
  Abstraction: Hiding implementation details and showing only essential information to the user. Achieved using abstract classes or interfaces.
 
