@@ -1,89 +1,163 @@
- Abstract Classes and Interfaces: An abstract class serves as a base class and cannot be instantiated. It often contains at least one pure virtual function (= 0).
+# Object-Oriented Programming Concepts
 
- Abstraction: Hiding implementation details and showing only essential information to the user. Achieved using abstract classes or interfaces.
+## Abstract Classes and Interfaces
+An abstract class serves as a base class and cannot be instantiated. It often contains at least one pure virtual function (= 0).
 
- Access Modifiers (Public, Private, Protected): Access modifiers define the visibility of class members.
+```cpp
+class AbstractShape {
+public:
+    virtual void draw() = 0;  // Pure virtual function
+};
 
- Attributes / Properties: Attributes are variables that hold data specific to an object.
+class Circle : public AbstractShape {
+public:
+    void draw() override {
+        std::cout << "Drawing a circle." << std::endl;
+    }
+};
 
- Class Variable: A class variable is shared across all instances of a class. In C++, this is achieved using the static keyword.
+## Abstraction
+Hiding implementation details and showing only essential information to the user. Achieved using abstract classes or interfaces.
+'''
+class AbstractShape {
+public:
+    virtual void draw() = 0;  // Abstract method
+    virtual ~AbstractShape() = default;  // Virtual destructor
+};
 
- Classes and Objects: A class is a blueprint for creating objects. It defines attributes (data members) and behaviors (methods) that objects of the class will have. An object is an instance of a class, representing a specific realization of the class blueprint with actual data.
+class Circle : public AbstractShape {
+public:
+    void draw() override {
+        std::cout << "Drawing a circle." << std::endl;
+    }
+};
 
- Collections and Iterators: Collections are containers like arrays, vectors, or lists. Iterators traverse these collections.
+'''
 
- Composition: Composition models a "has-a" relationship where one class contains objects of another class.
+## Access Modifiers (Public, Private, Protected)
+Access modifiers define the visibility of class members.
 
- Constructors and Destructors: Constructors initialize an object. Destructors clean up resources when the object is destroyed.
+## Attributes / Properties
+Attributes are variables that hold data specific to an object.
 
- Design Patterns (e.g., Singleton, Factory, Observer): Reusable solutions to common software design problems. Examples: Singleton, Factory, Observer.
+## Class Variable
+A class variable is shared across all instances of a class. In C++, this is achieved using the static keyword.
 
- Encapsulation: Encapsulation binds data and methods together and restricts access to certain parts of the object.
+## Classes and Objects
+A class is a blueprint for creating objects. It defines attributes (data members) and behaviors (methods) that objects of the class will have. An object is an instance of a class, representing a specific realization of the class blueprint with actual data.
 
- Exception Handling: Exception handling allows a program to handle runtime errors gracefully using try, catch, and throw.
+## Collections and Iterators
+Collections are containers like arrays, vectors, or lists. Iterators traverse these collections.
 
- File I/O in OOP: File I/O (Input/Output) allows reading from and writing to files.
+## Composition
+Composition models a "has-a" relationship where one class contains objects of another class.
 
- Friends: A friend function or class can access private and protected members of another class.
+## Constructors and Destructors
+Constructors initialize an object. Destructors clean up resources when the object is destroyed.
 
- Generics and Templates: Templates allow the creation of generic classes and functions.
+## Design Patterns (e.g., Singleton, Factory, Observer)
+Reusable solutions to common software design problems. Examples: Singleton, Factory, Observer.
 
- Inheritance: Inheritance allows a class (child) to derive attributes and methods from another class (parent).
+## Encapsulation
+Encapsulation binds data and methods together and restricts access to certain parts of the object.
 
- Instance Variable: Inheritance allows a class (child) to derive attributes and methods from another class (parent).
+## Exception Handling
+Exception handling allows a program to handle runtime errors gracefully using try, catch, and throw.
 
- Member Variable: A member variable is a variable declared within a class, either as an instance variable or a static (class-level) variable.
+## File I/O in OOP
+File I/O (Input/Output) allows reading from and writing to files.
 
- Memory Management (Garbage Collection, Pointers): Memory management involves dynamic allocation and deallocation of memory using pointers.
+## Friends
+A friend function or class can access private and protected members of another class.
 
- Method Overloading: Method overloading allows multiple functions in the same class with the same name but different parameters.
+## Generics and Templates
+Templates allow the creation of generic classes and functions.
 
- Method: A method is a function defined inside a class to manipulate the class's data.
+## Inheritance
+Inheritance allows a class (child) to derive attributes and methods from another class (parent).
 
- Multiple Inheritance: Multiple inheritance allows a class to inherit from more than one parent class.
+## Instance Variable
+An instance variable is a variable declared inside a class, specific to an instance of the class.
 
- Multithreading in OOP (time permitting): Multithreading allows a program to execute multiple threads (lightweight processes) simultaneously.
+## Member Variable
+A member variable is a variable declared within a class, either as an instance variable or a static (class-level) variable.
 
- Object Relationships (Association, Aggregation, Composition): 
- 
- Association: A "uses-a" relationship where one object interacts with another. The objects are independent and have no ownership of each other.
+## Memory Management (Garbage Collection, Pointers)
+Memory management involves dynamic allocation and deallocation of memory using pointers.
 
- Aggregation: A "has-a" relationship where one object owns another, but the owned object can exist independently. This is a weak ownership relationship.
+## Method Overloading
+Method overloading allows multiple functions in the same class with the same name but different parameters.
 
- Composition: A "has-a" relationship where one object owns and manages the lifetime of another. The contained object cannot exist independently of the container.
+## Method
+A method is a function defined inside a class to manipulate the class's data.
 
- Object-Oriented Design Principles: Best practices for designing software systems.
+## Multiple Inheritance
+Multiple inheritance allows a class to inherit from more than one parent class.
 
- Operator Overloading: Operator overloading allows customizing the behavior of operators for user-defined types.
+## Multithreading in OOP (time permitting)
+Multithreading allows a program to execute multiple threads (lightweight processes) simultaneously.
 
- Overloading: Overloading allows multiple methods or operators in the same scope to have the same name but different signatures (parameter types, number of parameters).
+## Object Relationships (Association, Aggregation, Composition)
 
- Polymorphism: Polymorphism allows objects to be treated as instances of their parent class rather than their actual class. It is achieved using virtual functions in C++.
+### Association
+A "uses-a" relationship where one object interacts with another. The objects are independent and have no ownership of each other.
 
- Public / Private / Protected: Access modifiers in C++ control the visibility and accessibility of class members.
+### Aggregation
+A "has-a" relationship where one object owns another, but the owned object can exist independently. This is a weak ownership relationship.
 
- Public: Members are accessible from anywhere.
+### Composition
+A "has-a" relationship where one object owns and manages the lifetime of another. The contained object cannot exist independently of the container.
 
- Private: Members are only accessible within the class itself.
+## Object-Oriented Design Principles
+Best practices for designing software systems.
 
- Protected: Members are accessible within the class and its derived classes.
+## Operator Overloading
+Operator overloading allows customizing the behavior of operators for user-defined types.
 
- SOLID Principles: SOLID is a set of five principles for designing scalable and maintainable software
- 
- Single Responsibility Principle: A class should have one, and only one, reason to change.
- 
- Open/Closed Principle: A class should be open for extension but closed for modification.
- 
- Liskov Substitution Principle: Subtypes must be substitutable for their base types.
- 
- Interface Segregation Principle: A class should not be forced to implement interfaces it doesn't use.
- 
- Dependency Inversion Principle: High-level modules should not depend on low-level modules. Both should depend on abstractions.
+## Overloading
+Overloading allows multiple methods or operators in the same scope to have the same name but different signatures (parameter types, number of parameters).
 
- Static (Methods and Variables): Static members belong to the class rather than any instance.
+## Polymorphism
+Polymorphism allows objects to be treated as instances of their parent class rather than their actual class. It is achieved using virtual functions in C++.
 
- Testing in OOP (Unit Testing, Test-Driven Development): Testing ensures code works as expected. Unit testing tests individual components, and Test-Driven Development (TDD) writes tests before implementing functionality.
+## Public / Private / Protected
+Access modifiers in C++ control the visibility and accessibility of class members.
 
- UML Diagrams and Modeling: Unified Modeling Language (UML) diagrams visually represent system design. Examples include class diagrams, sequence diagrams, and use-case diagrams.
+### Public
+Members are accessible from anywhere.
 
- Virtual: Virtual functions in C++ allow dynamic (runtime) method overriding.
+### Private
+Members are only accessible within the class itself.
+
+### Protected
+Members are accessible within the class and its derived classes.
+
+## SOLID Principles
+SOLID is a set of five principles for designing scalable and maintainable software.
+
+### Single Responsibility Principle
+A class should have one, and only one, reason to change.
+
+### Open/Closed Principle
+A class should be open for extension but closed for modification.
+
+### Liskov Substitution Principle
+Subtypes must be substitutable for their base types.
+
+### Interface Segregation Principle
+A class should not be forced to implement interfaces it doesn't use.
+
+### Dependency Inversion Principle
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
+## Static (Methods and Variables)
+Static members belong to the class rather than any instance.
+
+## Testing in OOP (Unit Testing, Test-Driven Development)
+Testing ensures code works as expected. Unit testing tests individual components, and Test-Driven Development (TDD) writes tests before implementing functionality.
+
+## UML Diagrams and Modeling
+Unified Modeling Language (UML) diagrams visually represent system design. Examples include class diagrams, sequence diagrams, and use-case diagrams.
+
+## Virtual
+Virtual functions in C++ allow dynamic (runtime) method overriding.
