@@ -20,14 +20,58 @@ public:
 ## Abstraction
 Hiding implementation details and showing only essential information to the user. Achieved using abstract classes or interfaces.
 
+```cpp
+class Car {
+private:
+    void startEngine() { std::cout << "Engine started." << std::endl; }
+public:
+    void drive() {
+        startEngine(); // Implementation hidden from the user
+        std::cout << "Car is driving." << std::endl;
+    }
+};
+```
+
 ## Access Modifiers (Public, Private, Protected)
 Access modifiers define the visibility of class members.
+
+```cpp
+class Example {
+private:
+    int privateVar; // Only accessible within the class
+
+protected:
+    int protectedVar; // Accessible in derived classes
+
+public:
+    int publicVar; // Accessible from anywhere
+};
+```
 
 ## Attributes / Properties
 Attributes are variables that hold data specific to an object.
 
+```cpp
+class Person {
+public:
+    std::string name; // Attribute to store name
+    int age; // Attribute to store age
+};
+```
+
 ## Class Variable
 A class variable is shared across all instances of a class. In C++, this is achieved using the static keyword.
+
+```cpp
+class Counter {
+public:
+    static int count; // Shared across all instances
+
+    Counter() { count++; }
+};
+
+int Counter::count = 0; // Initialize static variable
+```
 
 ## Classes and Objects
 A class is a blueprint for creating objects. It defines attributes (data members) and behaviors (methods) that objects of the class will have. An object is an instance of a class, representing a specific realization of the class blueprint with actual data.
