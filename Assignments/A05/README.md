@@ -6,9 +6,9 @@
 
 For this assignment I downloaded WSL 
 
-### Instructions
+### Instructions:
 
-|  #  | Step                               | Description                                                                                     |  
+|  #  | Steps                               | Description                                                                                     |  
 | :-: | ---------------------------------- | ----------------------------------------------------------------------------------------------- |  
 |  1  | Check WSL Status                   | Run `wsl -l -v` to list installed Linux distributions and their states; screenshot the output.  |  
 |  2  | Verify Linux Distro Details        | Run `lsb_release -a` to confirm distro details; screenshot the output for submission.           |  
@@ -17,7 +17,7 @@ For this assignment I downloaded WSL
 |  5  | Execute Bash Command or Script     | Run a simple bash script to verify WSL usage; document results for submission.                  |  
 
 
-### Screenshots
+### Screenshots:
 
 ![](screenshot1.png)
 
