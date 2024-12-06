@@ -18,24 +18,33 @@
  |   1   | program1.cpp      | Main program implementing the `Fraction` class and performing arithmetic operations. |
  |   2   | fractions.txt     | Input file containing fractions and operations for testing.                 |
 
-
  ### Instructions  
 
  1. **Setup**:  
-   - Clone the repository: `git clone https://github.com/username/repo.git`.  
-   - Navigate to the project directory: `cd Assignments/P01`.  
+   - Place `program1.cpp` and `fractions.txt` in the same directory.  
 
  2. **Compilation**:  
    - Use a C++ compiler to build the program:  
      ```bash  
-     g++ main.cpp Fraction.cpp -o fracMath  
+     g++ program1.cpp -o program1  
      ```  
 
  3. **Running the Program**:  
-   - Run the program with a sample input file:  
+   - Run the program with the input file:  
      ```bash  
-     ./fracMath input.txt  
+     ./program1  
      ```  
 
  4. **Input File Format**:  
-   The input file should contain operations in the following format:  
+   The input file (`fractions.txt`) should contain operations in the following format:  
+   1/2 + 3/4
+   5/6 - 1/3
+   7/8 * 2/3
+   4/5 / 1/5 
+   
+ 5. **Example Output**:   
+   1/2 + 3/4 = 5/4
+   5/6 - 1/3 = 1/2
+
+
+
