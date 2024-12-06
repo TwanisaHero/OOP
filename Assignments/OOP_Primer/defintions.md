@@ -1,5 +1,43 @@
 Abstract Classes and Interfaces: An abstract class serves as a base class and cannot be instantiated. It often contains at least one pure virtual function (= 0).
 
+''' 
+#include <iostream>
+using namespace std;
+
+class Animal {
+private:
+    string name;
+    string species;
+
+public:
+    // Constructor
+    Animal(string n, string s) : name(n), species(s) {}
+
+    // Method to make a sound
+    void makeSound() {
+        cout << "Generic Animal Sound" << endl;
+    }
+
+    // Getter for name
+    string getName() {
+        return name;
+    }
+
+    // Getter for species
+    string getSpecies() {
+        return species;
+    }
+};
+
+int main() {
+    Animal dog("Buddy", "Dog");
+    cout << "Name: " << dog.getName() << endl;
+    cout << "Species: " << dog.getSpecies() << endl;
+    dog.makeSound();
+    return 0;
+}
+''' 
+
  Abstraction: Hiding implementation details and showing only essential information to the user. Achieved using abstract classes or interfaces.
 
  Access Modifiers (Public, Private, Protected): Access modifiers define the visibility of class members.
