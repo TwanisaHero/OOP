@@ -15,7 +15,7 @@ public:
         std::cout << "Drawing a circle." << std::endl;
     }
 };
-
+```
 
 ## Abstraction
 Hiding implementation details and showing only essential information to the user. Achieved using abstract classes or interfaces.
