@@ -736,11 +736,114 @@ int main() {
 ### Public
 Members are accessible from anywhere.
 
+```cpp
+#include <iostream>
+using namespace std;
+
+class Car {
+public: // Public access modifier
+    string make;   // Public attribute
+    string model;  // Public attribute
+
+    // Public method
+    void displayDetails() const {
+        cout << "Car Make: " << make << ", Model: " << model << endl;
+    }
+};
+
+int main() {
+    Car myCar;
+
+    // Direct access to public attributes
+    myCar.make = "Toyota";
+    myCar.model = "Corolla";
+
+    // Accessing public method
+    myCar.displayDetails(); // Output: Car Make: Toyota, Model: Corolla
+
+    return 0;
+}
+```
+
 ### Private
 Members are only accessible within the class itself.
 
+```cpp
+#include <iostream>
+using namespace std;
+
+class BankAccount {
+private: // Private access modifier
+    double balance; // Private attribute
+
+public:
+    BankAccount(double initialBalance) : balance(initialBalance) {}
+
+    // Public method to access private member
+    double getBalance() const {
+        return balance;
+    }
+
+    // Public method to modify private member
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout << "Deposited: " << amount << endl;
+        } else {
+            cout << "Invalid deposit amount!" << endl;
+        }
+    }
+};
+
+int main() {
+    BankAccount account(500.0);
+
+    // Accessing private members via public methods
+    cout << "Initial Balance: " << account.getBalance() << endl; // Output: 500
+
+    account.deposit(150); // Output: Deposited: 150
+    cout << "Updated Balance: " << account.getBalance() << endl; // Output: 650
+
+    // account.balance = 1000; // Compile-time error: balance is private
+
+    return 0;
+}
+```
+
 ### Protected
 Members are accessible within the class and its derived classes.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
+protected: // Protected access modifier
+    string species;
+
+public:
+    Animal(const string& speciesName) : species(speciesName) {}
+};
+
+class Dog : public Animal {
+public:
+    Dog() : Animal("Canine") {}
+
+    void displaySpecies() {
+        cout << "This is a " << species << "." << endl;
+    }
+};
+
+int main() {
+    Dog myDog;
+
+    myDog.displaySpecies(); // Output: This is a Canine.
+
+    // cout << myDog.species; // Compile-time error: species is protected
+
+    return 0;
+}
+```
 
 ## SOLID Principles
 SOLID is a set of five principles for designing scalable and maintainable software.
@@ -817,134 +920,141 @@ int main() {
 Subtypes must be substitutable for their base types.
 
 ```cpp
-# Base class
-class Bird:
-    def fly(self):
-        return "I can fly!"
+#include <iostream>
+#include <string>
+using namespace std;
 
-# Derived class that adheres to LSP
-class Sparrow(Bird):
-    pass
+// Base class
+class Bird {
+public:
+    virtual string fly() const {
+        return "I can fly!";
+    }
+};
 
-# Derived class that violates LSP
-class Ostrich(Bird):
-    def fly(self):  # Ostriches can't fly
-        raise NotImplementedError("Ostriches can't fly!")
+// Derived class adheres to LSP
+class Sparrow : public Bird {
+public:
+    string fly() const override {
+        return "Sparrow flying!";
+    }
+};
 
-# Using the principle
-def let_bird_fly(bird: Bird):
-    print(bird.fly())
+// Derived class violates LSP
+class Ostrich : public Bird {
+public:
+    string fly() const override {
+        return "Ostriches can't fly!"; // Behavior unexpected for a Bird
+    }
+};
 
-sparrow = Sparrow()
-let_bird_fly(sparrow)  # Output: "I can fly!"
+// Function demonstrating LSP
+void letBirdFly(const Bird& bird) {
+    cout << bird.fly() << endl;
+}
 
-ostrich = Ostrich()
-# let_bird_fly(ostrich)  # This will break the LSP by raising an exception
+int main() {
+    Sparrow sparrow;
+    Ostrich ostrich;
+
+    letBirdFly(sparrow);  // Output: Sparrow flying!
+    letBirdFly(ostrich);  // Output: Ostriches can't fly! (Violates LSP)
+
+    return 0;
+}
 ```
-
 ### Interface Segregation Principle
-A class should not be forced to implement interfaces it doesn't use.
 
 ```cpp
-# Violation of ISP
-class Worker:
-    def work(self):
-        pass
+#include <iostream>
+#include <stdexcept>
+using namespace std;
 
-    def eat(self):
-        pass
+// Violation of ISP
+class Worker {
+public:
+    virtual void work() = 0;
+    virtual void eat() = 0; // Not every worker needs this
+    virtual ~Worker() = default;
+};
 
-class Robot(Worker):
-    def work(self):
-        return "I am working!"
+class HumanWorker_Violation : public Worker {
+public:
+    void work() override {
+        cout << "Human is working." << endl;
+    }
+    void eat() override {
+        cout << "Human is eating." << endl;
+    }
+};
 
-    def eat(self):  # Robots don’t eat
-        raise NotImplementedError("Robots don't eat!")
+class RobotWorker_Violation : public Worker {
+public:
+    void work() override {
+        cout << "Robot is working." << endl;
+    }
+    void eat() override {
+        throw logic_error("Robots don't eat!"); // Violation: Irrelevant method
+    }
+};
 
-# Refactoring to adhere to ISP
-class Workable:
-    def work(self):
-        pass
+// Adherence to ISP
+class Workable {
+public:
+    virtual void work() = 0;
+    virtual ~Workable() = default;
+};
 
-class Eatable:
-    def eat(self):
-        pass
+class Eatable {
+public:
+    virtual void eat() = 0;
+    virtual ~Eatable() = default;
+};
 
-class Human(Workable, Eatable):
-    def work(self):
-        return "I am working!"
+class HumanWorker : public Workable, public Eatable {
+public:
+    void work() override {
+        cout << "Human is working." << endl;
+    }
+    void eat() override {
+        cout << "Human is eating." << endl;
+    }
+};
 
-    def eat(self):
-        return "I am eating!"
+class RobotWorker : public Workable {
+public:
+    void work() override {
+        cout << "Robot is working." << endl;
+    }
+};
 
-class Robot(Workable):
-    def work(self):
-        return "I am working!"
-```
+int main() {
+    cout << "=== Violation of ISP ===" << endl;
+    HumanWorker_Violation human_violation;
+    RobotWorker_Violation robot_violation;
 
-### Dependency Inversion Principle
-High-level modules should not depend on low-level modules. Both should depend on abstractions.
+    human_violation.work();  // Output: Human is working.
+    human_violation.eat();   // Output: Human is eating.
 
-```cpp
-# Without DIP: High-level module depends on low-level module
-class LightBulb:
-    def turn_on(self):
-        print("LightBulb: ON")
+    robot_violation.work();  // Output: Robot is working.
+    try {
+        robot_violation.eat();  // Throws exception: Robots don't eat!
+    } catch (const logic_error& e) {
+        cout << "Error: " << e.what() << endl;
+    }
 
-    def turn_off(self):
-        print("LightBulb: OFF")
+    cout << "\n=== Adherence to ISP ===" << endl;
+    HumanWorker human;
+    RobotWorker robot;
 
-class Switch:
-    def __init__(self, bulb: LightBulb):
-        self.bulb = bulb
+    human.work();  // Output: Human is working.
+    human.eat();   // Output: Human is eating.
 
-    def toggle(self, state: bool):
-        if state:
-            self.bulb.turn_on()
-        else:
-            self.bulb.turn_off()
+    robot.work();  // Output: Robot is working.
+    // robot.eat(); // Compile-time error: no eat() method
 
-# With DIP: Introduce an abstraction
-class Switchable:
-    def turn_on(self):
-        pass
-
-    def turn_off(self):
-        pass
-
-class LightBulb(Switchable):
-    def turn_on(self):
-        print("LightBulb: ON")
-
-    def turn_off(self):
-        print("LightBulb: OFF")
-
-class Fan(Switchable):
-    def turn_on(self):
-        print("Fan: Spinning")
-
-    def turn_off(self):
-        print("Fan: Stopped")
-
-class Switch:
-    def __init__(self, device: Switchable):
-        self.device = device
-
-    def toggle(self, state: bool):
-        if state:
-            self.device.turn_on()
-        else:
-            self.device.turn_off()
-
-# Usage
-bulb = LightBulb()
-fan = Fan()
-
-switch1 = Switch(bulb)
-switch2 = Switch(fan)
-
-switch1.toggle(True)  # Output: "LightBulb: ON"
-switch2.toggle(False)  # Output: "Fan: Stopped"
+    return 0;
+}
 ```
 
 ## Static (Methods and Variables)
