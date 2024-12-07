@@ -6,8 +6,6 @@
 
 #### Website: https://msumustangs.com/sports/mens-basketball/roster/antwan-taylor/11129
 
-#### Image:
 
-<img src="https://imgbox.com/xshOL8e6" width="200">
 
 
