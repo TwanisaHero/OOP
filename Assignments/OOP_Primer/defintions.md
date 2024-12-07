@@ -696,43 +696,6 @@ int main() {
 ## Public / Private / Protected
 Access modifiers in C++ control the visibility and accessibility of class members.
 
-```cpp
-#include <iostream>
-
-class Example {
-private:
-    int privateVar = 10; // Accessible only within the class
-
-protected:
-    int protectedVar = 20; // Accessible within the class and derived classes
-
-public:
-    int publicVar = 30; // Accessible from anywhere
-
-    void display() {
-        std::cout << "Private: " << privateVar
-                  << ", Protected: " << protectedVar
-                  << ", Public: " << publicVar << std::endl;
-    }
-};
-
-class Derived : public Example {
-public:
-    void show() {
-        // std::cout << privateVar; // Error: privateVar is not accessible
-        std::cout << "Protected: " << protectedVar << std::endl; // Accessible
-    }
-};
-
-int main() {
-    Example ex;
-    ex.display();
-    std::cout << "Public: " << ex.publicVar << std::endl; // Accessible
-
-    return 0;
-}
-```
-
 ### Public
 Members are accessible from anywhere.
 
