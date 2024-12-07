@@ -493,11 +493,138 @@ public:
 ### Composition
 A "has-a" relationship where one object owns and manages the lifetime of another. The contained object cannot exist independently of the container.
 
+```cpp
+#include <iostream>
+
+class Engine {
+public:
+    void start() { std::cout << "Engine started." << std::endl; }
+};
+
+class Car {
+private:
+    Engine engine; // Composition: Car "has-a" Engine
+
+public:
+    void drive() {
+        engine.start();
+        std::cout << "Car is driving." << std::endl;
+    }
+};
+
+int main() {
+    Car myCar;
+    myCar.drive();
+
+    return 0;
+}
+```
+
 ## Object-Oriented Design Principles
 Best practices for designing software systems.
 
+```cpp
+#include <iostream>
+#include <string>
+
+// Class responsible for handling user input
+class InputHandler {
+public:
+    std::string getUserInput() {
+        std::string input;
+        std::cout << "Enter your name: ";
+        std::cin >> input;
+        return input;
+    }
+};
+
+// Class responsible for displaying output
+class OutputHandler {
+public:
+    void displayMessage(const std::string& message) {
+        std::cout << message << std::endl;
+    }
+};
+
+int main() {
+    InputHandler inputHandler;
+    OutputHandler outputHandler;
+
+    std::string name = inputHandler.getUserInput();
+    outputHandler.displayMessage("Hello, " + name + "!");
+
+    return 0;
+}
+```
+
+
+```cpp
+#include <iostream>
+#include <string>
+
+// Class responsible for handling user input
+class InputHandler {
+public:
+    std::string getUserInput() {
+        std::string input;
+        std::cout << "Enter your name: ";
+        std::cin >> input;
+        return input;
+    }
+};
+
+// Class responsible for displaying output
+class OutputHandler {
+public:
+    void displayMessage(const std::string& message) {
+        std::cout << message << std::endl;
+    }
+};
+
+int main() {
+    InputHandler inputHandler;
+    OutputHandler outputHandler;
+
+    std::string name = inputHandler.getUserInput();
+    outputHandler.displayMessage("Hello, " + name + "!");
+
+    return 0;
+}
+```
+
 ## Operator Overloading
 Operator overloading allows customizing the behavior of operators for user-defined types.
+
+```cpp 
+#include <iostream>
+
+class Vector {
+private:
+    int x, y;
+
+public:
+    Vector(int x, int y) : x(x), y(y) {}
+
+    // Overload + operator
+    Vector operator+(const Vector& other) {
+        return Vector(x + other.x, y + other.y);
+    }
+
+    void display() const {
+        std::cout << "Vector(" << x << ", " << y << ")" << std::endl;
+    }
+};
+
+int main() {
+    Vector v1(3, 4);
+    Vector v2(1, 2);
+
+    Vector v3 = v1 + v2; // Using overloaded + operator
+    v3.display();
+
+    return 0;
+}
+```
 
 ```cpp
 class Complex {
@@ -513,7 +640,7 @@ public:
 
     void display() const {
         std::cout << real << " + " << imag << "i" << std::endl;
-    }
+    }`  
 };
 
 int main() {
@@ -526,11 +653,85 @@ int main() {
 ## Overloading
 Overloading allows multiple methods or operators in the same scope to have the same name but different signatures (parameter types, number of parameters).
 
+```cpp
+#include <iostream>
+
+class Calculator {
+public:
+    int add(int a, int b) { return a + b; }            // Method overloading
+    double add(double a, double b) { return a + b; }  
+};
+
+int main() {
+    Calculator calc;
+    std::cout << calc.add(5, 10) << std::endl;        // Calls int version
+    std::cout << calc.add(2.5, 3.5) << std::endl;     // Calls double version
+    return 0;
+}
+```
+
 ## Polymorphism
 Polymorphism allows objects to be treated as instances of their parent class rather than their actual class. It is achieved using virtual functions in C++.
 
+```cpp
+#include <iostream>
+
+class Animal {
+public:
+    virtual void sound() { std::cout << "Animal sound." << std::endl; }
+};
+
+class Dog : public Animal {
+public:
+    void sound() override { std::cout << "Dog barks." << std::endl; }
+};
+
+int main() {
+    Animal* pet = new Dog();
+    pet->sound(); // Calls Dog's sound
+    delete pet;
+    return 0;
+}
+```
 ## Public / Private / Protected
 Access modifiers in C++ control the visibility and accessibility of class members.
+
+```cpp
+#include <iostream>
+
+class Example {
+private:
+    int privateVar = 10; // Accessible only within the class
+
+protected:
+    int protectedVar = 20; // Accessible within the class and derived classes
+
+public:
+    int publicVar = 30; // Accessible from anywhere
+
+    void display() {
+        std::cout << "Private: " << privateVar
+                  << ", Protected: " << protectedVar
+                  << ", Public: " << publicVar << std::endl;
+    }
+};
+
+class Derived : public Example {
+public:
+    void show() {
+        // std::cout << privateVar; // Error: privateVar is not accessible
+        std::cout << "Protected: " << protectedVar << std::endl; // Accessible
+    }
+};
+
+int main() {
+    Example ex;
+    ex.display();
+    std::cout << "Public: " << ex.publicVar << std::endl; // Accessible
+
+    return 0;
+}
+```
 
 ### Public
 Members are accessible from anywhere.
@@ -547,26 +748,294 @@ SOLID is a set of five principles for designing scalable and maintainable softwa
 ### Single Responsibility Principle
 A class should have one, and only one, reason to change.
 
+```cpp
+#include <iostream>
+#include <string>
+
+class Logger {
+public:
+    void log(const std::string& message) {
+        std::cout << "Log: " << message << std::endl;
+    }
+};
+
+class Calculator {
+public:
+    int add(int a, int b) {
+        return a + b;
+    }
+};
+
+int main() {
+    Calculator calc;
+    Logger logger;
+    int result = calc.add(5, 10);
+    logger.log("Calculation result: " + std::to_string(result));
+    return 0;
+}
+```
+
 ### Open/Closed Principle
 A class should be open for extension but closed for modification.
+
+```cpp 
+#include <iostream>
+
+class Shape {
+public:
+    virtual double area() const = 0; // Open for extension
+};
+
+class Circle : public Shape {
+    double radius;
+public:
+    Circle(double r) : radius(r) {}
+    double area() const override {
+        return 3.14159 * radius * radius;
+    }
+};
+
+class Rectangle : public Shape {
+    double width, height;
+public:
+    Rectangle(double w, double h) : width(w), height(h) {}
+    double area() const override {
+        return width * height;
+    }
+};
+
+int main() {
+    Shape* shapes[] = { new Circle(5), new Rectangle(4, 6) };
+    for (Shape* shape : shapes) {
+        std::cout << "Area: " << shape->area() << std::endl;
+    }
+    return 0;
+}
+```
 
 ### Liskov Substitution Principle
 Subtypes must be substitutable for their base types.
 
+```cpp
+# Base class
+class Bird:
+    def fly(self):
+        return "I can fly!"
+
+# Derived class that adheres to LSP
+class Sparrow(Bird):
+    pass
+
+# Derived class that violates LSP
+class Ostrich(Bird):
+    def fly(self):  # Ostriches can't fly
+        raise NotImplementedError("Ostriches can't fly!")
+
+# Using the principle
+def let_bird_fly(bird: Bird):
+    print(bird.fly())
+
+sparrow = Sparrow()
+let_bird_fly(sparrow)  # Output: "I can fly!"
+
+ostrich = Ostrich()
+# let_bird_fly(ostrich)  # This will break the LSP by raising an exception
+```
+
 ### Interface Segregation Principle
 A class should not be forced to implement interfaces it doesn't use.
+
+```cpp
+# Violation of ISP
+class Worker:
+    def work(self):
+        pass
+
+    def eat(self):
+        pass
+
+class Robot(Worker):
+    def work(self):
+        return "I am working!"
+
+    def eat(self):  # Robots don’t eat
+        raise NotImplementedError("Robots don't eat!")
+
+# Refactoring to adhere to ISP
+class Workable:
+    def work(self):
+        pass
+
+class Eatable:
+    def eat(self):
+        pass
+
+class Human(Workable, Eatable):
+    def work(self):
+        return "I am working!"
+
+    def eat(self):
+        return "I am eating!"
+
+class Robot(Workable):
+    def work(self):
+        return "I am working!"
+```
 
 ### Dependency Inversion Principle
 High-level modules should not depend on low-level modules. Both should depend on abstractions.
 
+```cpp
+# Without DIP: High-level module depends on low-level module
+class LightBulb:
+    def turn_on(self):
+        print("LightBulb: ON")
+
+    def turn_off(self):
+        print("LightBulb: OFF")
+
+class Switch:
+    def __init__(self, bulb: LightBulb):
+        self.bulb = bulb
+
+    def toggle(self, state: bool):
+        if state:
+            self.bulb.turn_on()
+        else:
+            self.bulb.turn_off()
+
+# With DIP: Introduce an abstraction
+class Switchable:
+    def turn_on(self):
+        pass
+
+    def turn_off(self):
+        pass
+
+class LightBulb(Switchable):
+    def turn_on(self):
+        print("LightBulb: ON")
+
+    def turn_off(self):
+        print("LightBulb: OFF")
+
+class Fan(Switchable):
+    def turn_on(self):
+        print("Fan: Spinning")
+
+    def turn_off(self):
+        print("Fan: Stopped")
+
+class Switch:
+    def __init__(self, device: Switchable):
+        self.device = device
+
+    def toggle(self, state: bool):
+        if state:
+            self.device.turn_on()
+        else:
+            self.device.turn_off()
+
+# Usage
+bulb = LightBulb()
+fan = Fan()
+
+switch1 = Switch(bulb)
+switch2 = Switch(fan)
+
+switch1.toggle(True)  # Output: "LightBulb: ON"
+switch2.toggle(False)  # Output: "Fan: Stopped"
+```
+
 ## Static (Methods and Variables)
 Static members belong to the class rather than any instance.
+
+```cpp
+#include <iostream>
+
+class Counter {
+private:
+    static int count; // Shared across all objects
+public:
+    Counter() { ++count; }
+    static int getCount() { return count; } // Static method to access static variable
+};
+
+int Counter::count = 0; // Initialize static variable
+
+int main() {
+    Counter c1, c2, c3;
+    std::cout << "Number of objects: " << Counter::getCount() << std::endl;
+    return 0;
+}
+```
 
 ## Testing in OOP (Unit Testing, Test-Driven Development)
 Testing ensures code works as expected. Unit testing tests individual components, and Test-Driven Development (TDD) writes tests before implementing functionality.
 
+```cpp
+#include <gtest/gtest.h> // Google Test framework
+
+class Calculator {
+public:
+    int add(int a, int b) { return a + b; }
+    int subtract(int a, int b) { return a - b; }
+};
+
+// Unit Test
+TEST(CalculatorTests, AddTest) {
+    Calculator calc;
+    EXPECT_EQ(calc.add(3, 2), 5);
+}
+
+TEST(CalculatorTests, SubtractTest) {
+    Calculator calc;
+    EXPECT_EQ(calc.subtract(5, 3), 2);
+}
+
+// Main for running tests
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+```
+
 ## UML Diagrams and Modeling
 Unified Modeling Language (UML) diagrams visually represent system design. Examples include class diagrams, sequence diagrams, and use-case diagrams.
 
+```cpp
++-------------+
+|    Car      |
++-------------+
+| - brand     |
+| - model     |
+| - year      |
++-------------+
+| + drive()   |
+| + stop()    |
++-------------+
+```
+
 ## Virtual
 Virtual functions in C++ allow dynamic (runtime) method overriding.
+
+```cpp
+#include <iostream>
+
+class Animal {
+public:
+    virtual void speak() { std::cout << "Animal speaks." << std::endl; }
+};
+
+class Dog : public Animal {
+public:
+    void speak() override { std::cout << "Dog barks." << std::endl; }
+};
+
+int main() {
+    Animal* animal = new Dog();
+    animal->speak(); // Calls Dog's speak due to the virtual keyword
+    delete animal;
+    return 0;
+}
+```
