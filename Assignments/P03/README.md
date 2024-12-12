@@ -1,4 +1,4 @@
-# P02C - KnuckleBones Game 
+# P03 - KnuckleBones Game 
 
 ## Overview
 KnuckleBones is a simple dice game featured in "Cult of the Lamb." The game is played on a 3x3 grid where two players take turns rolling dice and placing them on their respective grids. The goal is to score more points than your opponent by strategically placing dice and using various game mechanics. The game ends when all spaces are filled, and the player with the highest score wins.
