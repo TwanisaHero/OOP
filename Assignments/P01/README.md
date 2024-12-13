@@ -24,31 +24,11 @@ Key features include:
 
 ### Instructions  
 
-| Step | Action | Command/Format |
-| ---- | ------ | -------------- |
-| 1 | **Compilation** | Compile the program using a C++ compiler: |
-|   | | ```bash g++ program1.cpp -o program1 ``` |
-| 2 | **Running the Program** | Once compiled, run the program by executing: |
-|   | | ```bash ./program1 ``` |
-| 3 | **Input File Format** | The input file (`fractions.txt`) should contain operations in the format: |
-|   | | ```<fraction1> <operator> <fraction2>``` |
-|   | | Example: |
-|   | | ```
-1/2 + 3/4  
-5/6 - 1/3  
-7/8 * 2/3  
-4/5 / 1/5  
-``` |
-| 4 | **Expected Output** | The program will process the operations and display the results in the format: |
-|   | | ```
-1/2 + 3/4 = 5/4  
-5/6 - 1/3 = 1/2  
-7/8 * 2/3 = 7/12  
-4/5 / 1/5 = 4  
-``` |
-| 5 | **Notes** | - The program automatically simplifies results to their lowest terms. |
-|   | | - Invalid input formats will trigger an error message and prompt re-entry. |
+| Step | Action               | Command/Format                           |
+| ---- | -------------------- | ---------------------------------------- |
+| 1    | **Compilation**       | `g++ program1.cpp -o program1`           |
+| 2    | **Run the Program**   | `./program1`                             |
+| 3    | **Input File Format** | Operations in `fractions.txt` should be in the format: `<fraction1> <operator> <fraction2>` |
 
-### Notes:  
-- The program simplifies results to their lowest terms automatically.  
-- Invalid input formats will produce error messages and prompt re-entry.  
+### Input File Format  
+The input file (`fractions.txt`) should contain operations in the following format:  
