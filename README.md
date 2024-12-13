@@ -8,7 +8,7 @@
 
 #### Image:
 
-<img src="https://imgbox.com/mQh61vya" width="200">
+<img src="https://github.com/TwanisaHero/OOP/blob/main/Screenshot_20241206_110414.png" width="200">
 
 #### Avatar:
 
