@@ -12,4 +12,4 @@
 
 #### Avatar:
 
-<img src="https://github.com/TwanisaHero/OOP/blob/main/basketball%20icon.png" width="75">
+<img src="[https://github.com/TwanisaHero/OOP/blob/main/basketball%20icon.png](https://www.vecteezy.com/free-vector/orange-basketball)" width="75">
