@@ -12,4 +12,4 @@
 
 #### Avatar:
 
-<img src="https://images2.imgbox.com/ae/bd/tERTAGTL_o.png" width="75">
+<img src="https://github.com/TwanisaHero/OOP/blob/main/basketball%20icon.png" width="75">
