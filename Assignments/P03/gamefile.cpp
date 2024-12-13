@@ -13,7 +13,7 @@ class Player;
 // === Dice Class ===
 class Dice {
 public:
-    Dice() { std::srand(std::time(0)); }
+    Dice() {}
     int roll() { return (std::rand() % 6) + 1; }
 };
 
@@ -65,6 +65,10 @@ public:
         }
     }
 
+    int get_cell_value(int row, int col) const {
+        return cells[row][col];
+    }
+
 private:
     int cells[3][3];
 
@@ -80,7 +84,7 @@ private:
 // === Player Class ===
 class Player {
 public:
-    Player(const std::string& name) : name(name), score(0) {}
+    Player(const std::string& name = "") : name(name), score(0) {}
 
     void take_turn(Grid& grid, Dice& dice) {
         int die_value = dice.roll();
@@ -112,6 +116,7 @@ public:
     Game() : current_player_index(0) {}
 
     void start() {
+        std::srand(std::time(0)); // Seed random number generator
         initscr();
         cbreak();
         noecho();
